@@ -38,6 +38,9 @@ public class CoverPage: NSManagedObject {
         self.init(entity: entity, insertInto: context)
         self.book = book
         self.image = image
+        
+     
+        
     }
     
    

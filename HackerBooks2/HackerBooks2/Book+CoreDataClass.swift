@@ -8,13 +8,14 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 @objc
 public class Book: NSManagedObject {
 
     static let entityName = "Book"
     
-    convenience init(title: String, imageURL: String, pdfURL: String, inContext context: NSManagedObjectContext){
+    convenience init(title: String, imageURL: String, pdfURL: String, image: UIImage, inContext context: NSManagedObjectContext){
         
         let entity = NSEntityDescription.entity(forEntityName: Book.entityName, in: context)!
         
@@ -23,6 +24,11 @@ public class Book: NSManagedObject {
         self.imageURL = imageURL
         self.pdfURL = pdfURL
         self.favorite = false
+        
+        //add cover
+        coverPage = CoverPage(book: self, image: image, inContext: context)
+        
+        
     
     }
 }

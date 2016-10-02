@@ -13,7 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var model = CoreDataStack(modelName: "Model")
+    var model = CoreDataStack(modelName: "Model")!
 //    {
 //        "authors": "Scott Chacon, Ben Straub",
 //        "image_url": "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg",
@@ -23,12 +23,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    }
     //crear prueba
     
-   
+    func prueba(){
+        
+        var tag = Tag(name: "un tag de prueba", inContext: model.context)
+        var tag2 = Tag(name: "otro tag de prueba", inContext: model.context)
+        
+        let img = UIImage(imageLiteralResourceName: "emptyBookCover.png")
+       
+        let book1 = Book(title: "Pro Git", imageURL: "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg", pdfURL: "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf", image: img, inContext: model.context)
+        let book2 = Book(title: "Pre Git", imageURL: "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg", pdfURL: "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf", image: img, inContext: model.context)
+        
+        let nota = Note(book: book1, inContext: model.context)
+        nota.text = "a ver que sale"
+        //busqueda
+        let busquedatag = NSFetchRequest<Tag>(entityName: Tag.entityName)
+        busquedatag.fetchBatchSize = 50
+        
+        let bt = try! model.context.fetch(busquedatag)
+        print(type(of:bt))
+        print(bt)
+        //busquedatag.sortDescriptors
+        //busqueda con filtrado
+        let busqueda2 = NSFetchRequest<Book>(entityName: Book.entityName)
+        busqueda2.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        busqueda2.predicate = NSPredicate(format: "name == %@", book1)
+        let libros = try! model.context.fetch(busqueda2)
+        
+        //guardado
+        model.save()
+        
+    }
     
   
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        prueba()
         // crear window
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
