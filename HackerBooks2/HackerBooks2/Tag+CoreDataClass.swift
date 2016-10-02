@@ -9,7 +9,18 @@
 import Foundation
 import CoreData
 
-
+@objc
 public class Tag: NSManagedObject {
 
+    static let entityName = "Tag"
+    
+    convenience init(name: String, inContext context: NSManagedObjectContext){
+        
+        let entity = NSEntityDescription.entity(forEntityName: Tag.entityName, in: context)!
+        
+        self.init(entity: entity, insertInto: context)
+        
+        self.name = name
+        
+    }
 }

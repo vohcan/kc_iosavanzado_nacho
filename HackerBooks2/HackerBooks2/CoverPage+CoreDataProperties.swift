@@ -16,7 +16,7 @@ extension CoverPage {
         return NSFetchRequest<CoverPage>(entityName: "CoverPage");
     }
 
-    @NSManaged public var image: NSData?
+    @NSManaged public var photoData: NSData?
     @NSManaged public var book: Book?
 
 }

@@ -20,7 +20,7 @@
         <relationship name="tag" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="bookTags" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="CoverPage" representedClassName=".CoverPage" syncable="YES">
-        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="photoData" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="coverPage" inverseEntity="Book" syncable="YES"/>
     </entity>
     <entity name="Geoloc" representedClassName=".Geoloc" syncable="YES">
