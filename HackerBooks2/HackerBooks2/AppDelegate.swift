@@ -21,56 +21,97 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        "tags": "version control, git",
 //        "title": "Pro Git"
 //    }
-    //crear prueba
     
-    func prueba(){
+    func loadData(){
+        //borron y cuenta nueva
+        do{
+            try model.dropAllData()
+        }catch{
+            print("error when try to delete")
+        }
         
-        var tag = Tag(name: "un tag de prueba", inContext: model.context)
-        var tag2 = Tag(name: "otro tag de prueba", inContext: model.context)
         
+        
+        //crear secciones
+        //let _ = BookTag(book: "libro1", tag: "tag1", inContext: model.context)
+        
+        
+        //crear libros
         let img = UIImage(imageLiteralResourceName: "emptyBookCover.png")
-       
-        let book1 = Book(title: "Pro Git", imageURL: "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg", pdfURL: "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf", image: img, inContext: model.context)
-        let book2 = Book(title: "Pre Git", imageURL: "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg", pdfURL: "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf", image: img, inContext: model.context)
+        let libro = Book(title: "Pro Git", imageURL: "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg", pdfURL: "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf", image: img, inContext: model.context)
         
-        let nota = Note(book: book1, inContext: model.context)
-        nota.text = "a ver que sale"
-        //busqueda
-        let busquedatag = NSFetchRequest<Tag>(entityName: Tag.entityName)
-        busquedatag.fetchBatchSize = 50
         
-        let bt = try! model.context.fetch(busquedatag)
-        print(type(of:bt))
-        print(bt)
-        //busquedatag.sortDescriptors
-        //busqueda con filtrado
-        let busqueda2 = NSFetchRequest<Book>(entityName: Book.entityName)
-        busqueda2.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-        busqueda2.predicate = NSPredicate(format: "name == %@", book1)
-        let libros = try! model.context.fetch(busqueda2)
-        
-        //guardado
+        //guardamos
         model.save()
         
     }
+    
+    
+    
+    //crear prueba
+    
+//    func prueba(){
+//        
+//        var tag = Tag(name: "un tag de prueba", inContext: model.context)
+//        var tag2 = Tag(name: "otro tag de prueba", inContext: model.context)
+//        
+//        let img = UIImage(imageLiteralResourceName: "emptyBookCover.png")
+//       
+//        let book1 = Book(title: "Pro Git", imageURL: "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg", pdfURL: "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf", image: img, inContext: model.context)
+//        let book2 = Book(title: "Pre Git", imageURL: "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg", pdfURL: "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf", image: img, inContext: model.context)
+//        
+//        let nota = Note(book: book1, inContext: model.context)
+//        nota.text = "a ver que sale"
+//        //busqueda
+//        let busquedatag = NSFetchRequest<Tag>(entityName: Tag.entityName)
+//        busquedatag.fetchBatchSize = 50
+//        
+//        let bt = try! model.context.fetch(busquedatag)
+//        print(type(of:bt))
+//        print(bt)
+//        //busquedatag.sortDescriptors
+//        //busqueda con filtrado
+//        let busqueda2 = NSFetchRequest<Book>(entityName: Book.entityName)
+//        busqueda2.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//        
+//        busqueda2.predicate = NSPredicate(format: "name == %@", book1)
+//        let libros = try! model.context.fetch(busqueda2)
+//        
+//        //guardado
+//        model.save()
+//        
+//    }
     
   
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        prueba()
+       // prueba()
+        
+        //creamos datos
+        //crear fetchrequest
+        let fr = NSFetchRequest<Book>(entityName: Book.entityName)
+        fr.fetchBatchSize = 50
+        fr.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
+        
+        
+        //creamos fechrc
+        let fc = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: model.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        
+         // Create the rootVC
+        
+        let nVC = LibraryTableViewController(fetchedResultsController: fc as! NSFetchedResultsController<NSFetchRequestResult>, style: .plain)
+        //crear nav controller
+        
+        let navVC = UINavigationController(rootViewController: nVC)
         // crear window
-        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         
-        // Create the model
-        
-        
-        
-        // Create the rootVC
-     
-        
+        //rootvc a la window
+        window?.rootViewController = navVC
+
         // Display
         window?.makeKeyAndVisible()
         

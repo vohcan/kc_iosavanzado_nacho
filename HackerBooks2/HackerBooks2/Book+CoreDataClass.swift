@@ -32,3 +32,9 @@ public class Book: NSManagedObject {
     
     }
 }
+
+
+//MARK: - searchable
+extension Book : NSFetchRequestResult{
+    
+}

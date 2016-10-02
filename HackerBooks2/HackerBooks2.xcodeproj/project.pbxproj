@@ -36,6 +36,8 @@
 		D3B75D5C1DA13ED40017AA2B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B75D5B1DA13ED40017AA2B /* CoreDataStack.swift */; };
 		D3B75D5F1DA192F60017AA2B /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B75D5D1DA192F60017AA2B /* LibraryTableViewController.swift */; };
 		D3B75D601DA192F60017AA2B /* LibraryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B75D5E1DA192F60017AA2B /* LibraryTableViewController.xib */; };
+		D3B75D621DA195EF0017AA2B /* JSONProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B75D611DA195EF0017AA2B /* JSONProcessing.swift */; };
+		D3B75D641DA196BA0017AA2B /* AsyncData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B75D631DA196BA0017AA2B /* AsyncData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		D3B75D5B1DA13ED40017AA2B /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		D3B75D5D1DA192F60017AA2B /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		D3B75D5E1DA192F60017AA2B /* LibraryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryTableViewController.xib; sourceTree = "<group>"; };
+		D3B75D611DA195EF0017AA2B /* JSONProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONProcessing.swift; sourceTree = "<group>"; };
+		D3B75D631DA196BA0017AA2B /* AsyncData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 		D38AFD141D9D7B110087EAF9 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				D3B75D631DA196BA0017AA2B /* AsyncData.swift */,
+				D3B75D611DA195EF0017AA2B /* JSONProcessing.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -267,6 +273,8 @@
 				D3B75D4A1DA11C5B0017AA2B /* Author+CoreDataProperties.swift in Sources */,
 				D3B75D461DA11C5B0017AA2B /* Book+CoreDataProperties.swift in Sources */,
 				D3B75D4F1DA11C5B0017AA2B /* Pdf+CoreDataClass.swift in Sources */,
+				D3B75D621DA195EF0017AA2B /* JSONProcessing.swift in Sources */,
+				D3B75D641DA196BA0017AA2B /* AsyncData.swift in Sources */,
 				D3B75D501DA11C5B0017AA2B /* Pdf+CoreDataProperties.swift in Sources */,
 				D3B75D451DA11C5B0017AA2B /* Book+CoreDataClass.swift in Sources */,
 				D3B75D541DA11C5B0017AA2B /* Photo+CoreDataProperties.swift in Sources */,
