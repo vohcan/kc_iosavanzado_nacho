@@ -7,18 +7,55 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var model = CoreDataStack(modelName: "Model")
+//    {
+//        "authors": "Scott Chacon, Ben Straub",
+//        "image_url": "http://hackershelf.com/media/cache/b4/24/b42409de128aa7f1c9abbbfa549914de.jpg",
+//        "pdf_url": "https://progit2.s3.amazonaws.com/en/2015-03-06-439c2/progit-en.376.pdf",
+//        "tags": "version control, git",
+//        "title": "Pro Git"
+//    }
+    //crear prueba
+    
+   
+    
+  
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // crear window
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        
+        // Create the model
+        
+        
+        
+        // Create the rootVC
+     
+        
+        // Display
+        window?.makeKeyAndVisible()
+        
+        
+        
+        
         return true
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
